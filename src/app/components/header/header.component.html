@@ -1,0 +1,14 @@
+<header>
+  <div class="header">
+    <app-brand></app-brand>
+
+    @if (from == "without-authenticate") {
+      <button class="btn btn-primary">
+        <ng-icon class="btn-icon" name="heroStarSolid"></ng-icon>
+        Iniciar sesión
+      </button>
+    } @else {
+      <a href="/logout" role="button" class="btn btn-danger">Cerrar sesión</a>
+    }
+  </div>
+</header>

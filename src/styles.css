@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.layout {
+  @apply mx-20;
+}
+
+.header {
+  @apply my-7 flex justify-between py-5 px-5 shadow items-center rounded-lg shadow-zinc-100;
+}
+
+.brand-container {
+  @apply flex justify-center items-center flex-row-reverse gap-1;
+}
+
+.brand {
+  @apply text-2xl text-red-500;
+}
+
+.brand-strong {
+  @apply text-gray-950 font-normal;
+}
+
+.brand-icon {
+  @apply text-lg;
+}
+
+.btn {
+  @apply rounded px-7 py-2 flex items-center gap-2
+  hover:opacity-90
+  active:opacity-75;
+}
+
+.btn-icon {
+  @apply text-xl;
+}
+
+.btn-primary {
+  @apply bg-orange-100 text-orange-400;
+}
+
+.btn-success {
+  @apply bg-green-100 text-green-400;
+}
+
+.title {
+  @apply text-3xl font-normal;
+}
