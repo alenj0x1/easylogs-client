@@ -2,13 +2,17 @@
   <div class="header">
     <app-brand></app-brand>
 
-    @if (from == "without-authenticate") {
-      <a class="color-warning link">
-        <ng-icon class="btn-icon" name="heroStarSolid"></ng-icon>
-        Iniciar sesión
+    @if (isAuthenticated) 
+    {
+      <a href="/logout" role="button" class="link color-primary">
+        <ng-icon class="btn-icon" name="heroArrowRightOnRectangleSolid"></ng-icon> Cerrar sesión
       </a>
-    } @else {
-      <a href="/logout" role="button" class="btn btn-danger">Cerrar sesión</a>
+    }
+    @else 
+    {
+      <a class="color-warning link" [routerLink]="['/login']">
+        <ng-icon class="btn-icon" name="heroStarSolid"></ng-icon> Iniciar sesión
+      </a>
     }
   </div>
 </header>

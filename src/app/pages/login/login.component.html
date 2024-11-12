@@ -1,17 +1,17 @@
 <div class="page-container">
-  <form class="form">
+  <form class="form" [formGroup]="form" (ngSubmit)="login()">
     <header class="form-header">
       <h1 class="title color-primary">{{ this.welcome }}</h1>
       <p class="para color-secondary">Inicie sesión con sus credenciales, para acceder a los registros</p>
     </header>
 
     <div class="form-body">
-      <input type="text" class="input" placeholder="Nombre de usuario">
-      <input type="text" class="input" placeholder="Contraseña">
+      <input type="text" class="input" placeholder="Nombre de usuario" formControlName="username">
+      <input type="password" class="input" placeholder="Contraseña" formControlName="password">
     </div>
 
     <footer class="form-footer">
-      <button class="btn btn-primary">
+      <button class="btn btn-primary" [disabled]="!form.valid">
         <ng-icon name="heroRocketLaunchSolid"></ng-icon>
         Iniciar sesión
       </button>

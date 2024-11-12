@@ -1,17 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BrandComponent } from '../brand/brand.component';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { heroStarSolid } from '@ng-icons/heroicons/solid';
+import { heroStarSolid, heroArrowRightOnRectangleSolid } from '@ng-icons/heroicons/solid';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [BrandComponent, NgIconComponent],
+  imports: [BrandComponent, NgIconComponent, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
-  providers: [provideIcons({ heroStarSolid })],
+  providers: [provideIcons({ heroStarSolid, heroArrowRightOnRectangleSolid })],
 })
-export class HeaderComponent {
-  @Input()
-  public from: string = '';
+export class HeaderComponent implements OnInit {
+  public isAuthenticated: boolean = false;
+
+  ngOnInit(): void {
+    if (localStorage.getItem('token')) this.isAuthenticated = true;
+  }
 }

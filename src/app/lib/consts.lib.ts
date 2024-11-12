@@ -25,3 +25,5 @@ export const welcomeList = [
   'Karibu', // Swahili
   'Sawubona', // Zulu
 ];
+
+export const baseUrl = 'http://localhost:5164/api/v1';

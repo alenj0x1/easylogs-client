@@ -7,7 +7,7 @@
 }
 
 .form-header {
-  @apply flex flex-col items-center mb-3;
+  @apply flex flex-col items-center mb-3 gap-2;
 }
 
 .form-header .title {

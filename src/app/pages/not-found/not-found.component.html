@@ -1,0 +1,14 @@
+<div class="page-container flex justify-center">
+  <div>
+    <div class="mb-4">
+      <app-brand/>
+    </div>
+
+    <h1 class="text-7xl color-primary font-bold">404</h1>
+    <span class="color-secondary text-2xl">This page not found</span>
+    
+    <span class="link">
+      Go to <strong [routerLink]="['/']" class="color-primary">{{ token ? 'home' : 'index'}}</strong>
+    </span>
+  </div>
+</div>
