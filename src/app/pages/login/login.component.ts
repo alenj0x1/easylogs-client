@@ -1,45 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { welcomeList } from '../../lib/consts.lib';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { heroRocketLaunchSolid } from '@ng-icons/heroicons/solid';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [NgIconComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
+  providers: [provideIcons({ heroRocketLaunchSolid })],
 })
 export class LoginComponent implements OnInit {
-  private welcomeList = [
-    'Bienvenido', // Español
-    'Welcome', // Inglés
-    'Bienvenue', // Francés
-    'Willkommen', // Alemán
-    'Benvenuto', // Italiano
-    'Bem-vindo', // Portugués
-    'Benvenut', // Catalán
-    'Velkommen', // Danés
-    'Välkommen', // Sueco
-    'Hoş geldiniz', // Turco
-    'Ahlan wa sahlan', // Árabe
-    '환영합니다 (Hwanyeonghamnida)', // Coreano
-    '欢迎 (Huānyíng)', // Chino
-    'ようこそ (Yōkoso)', // Japonés
-    'Добро пожаловать (Dobro pozhalovat)', // Ruso
-    'Sveiki atvykę', // Lituano
-    'Bine ați venit', // Rumano
-    'ยินดีต้อนรับ (Yindî ton rap)', // Tailandés
-    'स्वागत है (Swāgat hai)', // Hindi
-    'ยินดีต้อนรับ (Yindî ton rap)', // Tailandés
-    'Kalimera', // Griego
-    'Chào mừng', // Vietnamita
-    'Welkom', // Neerlandés
-    'Karibu', // Swahili
-    'Sawubona', // Zulu
-  ];
-  public welcome: string = this.welcomeList[0];
+  public welcome: string = welcomeList[0];
 
   ngOnInit(): void {
+    this.showWelcome();
+  }
+
+  showWelcome() {
+    let current = 0;
+
     setInterval(() => {
-      this.welcome = this.welcomeList[Math.floor(Math.random() * (this.welcomeList.length - 1 - 0))];
-    }, 1000);
+      if (current == welcomeList.length) current = 0;
+
+      this.welcome = welcomeList[current];
+      current += 1;
+    }, 3000);
   }
 }

@@ -1,34 +1,69 @@
+/* Base */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.layout {
-  @apply mx-20;
+*,
+*::before,
+*::after {
+  font-family: 'Poppins', serif;
 }
 
-.header {
-  @apply my-7 flex justify-between py-5 px-5 shadow items-center rounded-lg shadow-zinc-100;
+.title {
+  @apply text-3xl font-semibold;
 }
 
+.para {
+  @apply text-sm font-light;
+}
+
+.link {
+  @apply flex gap-2 text-sm cursor-pointer
+  hover:opacity-90
+  active:opacity-80;
+}
+
+/* Brand */
 .brand-container {
   @apply flex justify-center items-center flex-row-reverse gap-1;
 }
 
 .brand {
-  @apply text-2xl text-red-500;
+  @apply xl:text-xl text-red-500;
 }
 
 .brand-strong {
-  @apply text-gray-950 font-normal;
+  @apply text-zinc-900 font-normal;
 }
 
 .brand-icon {
   @apply text-lg;
 }
 
+/* Layout */
+body {
+  @apply bg-zinc-50;
+}
+
+.layout {
+  @apply xl:mx-20;
+}
+
+.page-container {
+  @apply xl:mx-0 mx-4 mt-6;
+}
+
+.header {
+  box-shadow: 0 0 100px 50px rgba(255, 0, 0, 0.1);
+  @apply bg-zinc-50 xl:mx-96 xl:my-7 flex justify-between py-2 px-10 items-center xl:rounded-full;
+}
+
+/* Buttons */
 .btn {
-  @apply rounded px-7 py-2 flex items-center gap-2
+  @apply text-sm justify-center rounded px-7 py-2 flex items-center gap-2
   hover:opacity-90
   active:opacity-75;
 }
@@ -38,13 +73,57 @@
 }
 
 .btn-primary {
-  @apply bg-orange-100 text-orange-400;
+  @apply bg-red-700 text-red-300;
 }
 
 .btn-success {
-  @apply bg-green-100 text-green-400;
+  @apply bg-green-700 text-green-300;
 }
 
-.title {
-  @apply text-3xl font-normal;
+/* Forms */
+.form {
+  @apply flex flex-col gap-3 p-10 rounded-lg;
+}
+
+.form-body {
+  @apply flex flex-col gap-2;
+}
+
+.form-footer {
+  @apply mt-3;
+}
+
+.input {
+  border: 1px solid rgb(75, 75, 75, 0.1);
+  @apply bg-zinc-100 py-3 px-4 rounded-md text-sm text-zinc-700 font-medium
+  placeholder:text-zinc-300 placeholder:font-light;
+}
+
+.input:focus {
+  outline: 6px solid #ff323236;
+}
+
+/* Colors */
+.color-primary {
+  @apply text-red-600;
+}
+
+.bg-primary {
+  @apply bg-red-600;
+}
+
+.color-secondary {
+  @apply text-zinc-800;
+}
+
+.bg-secondary {
+  @apply bg-zinc-800;
+}
+
+.color-warning {
+  @apply text-orange-400;
+}
+
+.bg-warning {
+  @apply bg-orange-400;
 }

@@ -1,16 +1,20 @@
-<div>
-  <form>
-    <header>
-      <h1 class="title">{{ this.welcome }}</h1>
-      <p class="para">Inicie sesión con sus credenciales, para acceder a los registros</p>
+<div class="page-container">
+  <form class="form">
+    <header class="form-header">
+      <h1 class="title color-primary">{{ this.welcome }}</h1>
+      <p class="para color-secondary">Inicie sesión con sus credenciales, para acceder a los registros</p>
     </header>
 
-    <div>
-
+    <div class="form-body">
+      <input type="text" class="input" placeholder="Nombre de usuario">
+      <input type="text" class="input" placeholder="Contraseña">
     </div>
 
-    <footer>
-      <button class="btn btn-success">Iniciar sesión</button>
+    <footer class="form-footer">
+      <button class="btn btn-primary">
+        <ng-icon name="heroRocketLaunchSolid"></ng-icon>
+        Iniciar sesión
+      </button>
     </footer>
   </form>
 </div>

@@ -1,0 +1,23 @@
+.page-container {
+  @apply flex justify-center;
+}
+
+.form {
+  @apply max-w-[450px];
+}
+
+.form-header {
+  @apply flex flex-col items-center mb-3;
+}
+
+.form-header .title {
+  @apply w-screen flex justify-center text-4xl font-bold;
+}
+
+.form-header .para {
+  @apply text-center;
+}
+
+.form-footer .btn {
+  @apply w-full;
+}
