@@ -1,5 +1,5 @@
 .card {
-  @apply flex flex-col shadow justify-between items-start p-4
+  @apply flex flex-col shadow justify-start items-start p-4 min-h-24
   hover:cursor-pointer;
 }
 

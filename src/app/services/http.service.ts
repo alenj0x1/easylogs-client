@@ -35,6 +35,6 @@ export class HttpService {
 
   // User controller
   users(request: GetUsersRequest) {
-    return this.http.post<BaseResponse<UserAppDefaultDto>>(`${baseUrl}/user`, request);
+    return this.http.post<BaseResponse<UserAppDefaultDto[]>>(`${baseUrl}/user`, request);
   }
 }
