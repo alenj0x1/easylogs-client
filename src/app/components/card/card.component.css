@@ -1,0 +1,20 @@
+.card {
+  @apply flex flex-col shadow justify-between items-start p-4
+  hover:cursor-pointer;
+}
+
+.card-title {
+  @apply text-lg font-semibold text-zinc-800;
+}
+
+.card-para {
+  @apply text-sm text-zinc-500 text-start;
+}
+
+.card:hover .card-title {
+  @apply text-red-700;
+}
+
+.card:hover .card-para {
+  @apply text-red-700;
+}

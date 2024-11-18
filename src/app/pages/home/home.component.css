@@ -1,0 +1,11 @@
+.page-container {
+  @apply bg-white p-10 rounded-md;
+}
+
+.container-grid {
+  margin: 15px 0;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, auto));
+  grid-auto-rows: 100px;
+}

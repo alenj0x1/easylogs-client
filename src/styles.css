@@ -15,7 +15,15 @@
 }
 
 .title {
-  @apply text-3xl font-semibold;
+  @apply text-3xl font-bold;
+}
+
+.subtitle {
+  @apply flex gap-2 items-center text-3xl font-semibold;
+}
+
+.subtitle .icon {
+  @apply text-3xl;
 }
 
 .para {
@@ -119,7 +127,7 @@ body {
 }
 
 .color-secondary {
-  @apply text-zinc-800;
+  @apply text-zinc-700;
 }
 
 .bg-secondary {

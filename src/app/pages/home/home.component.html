@@ -1,3 +1,13 @@
 <div class="page-container">
-  <h1 class="title color-primary">Panel de control</h1>
+  <div>
+    <h1 class="title color-primary">Panel de control</h1>
+    <p class="para">Todas las acciones que necesita, en un solo lugar.</p>
+  </div>
+
+  <div class="container-grid">
+
+    @for (card of cards; track $index) {
+      <app-card [title]="card.title" [para]="card.para" [icon]="card.icon" [route]="card.route"/>
+    }
+  </div>
 </div>
