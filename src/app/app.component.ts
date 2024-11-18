@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MessagesModule } from 'primeng/messages';
 import { MessageService } from 'primeng/api';
+import { DataService } from './services/data.service';
+import { HttpService } from './services/http.service';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +13,10 @@ import { MessageService } from 'primeng/api';
   styleUrl: './app.component.css',
   providers: [MessageService],
 })
-export class AppComponent {
-  title = 'easylogs-client';
+export class AppComponent implements OnInit {
+  constructor(private messageService: MessageService, private data: DataService) {}
 
-  constructor(private messageService: MessageService) {
+  ngOnInit(): void {
     this.messageService.messageObserver.subscribe((data) => console.log(data));
   }
 }

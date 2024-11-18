@@ -4,5 +4,6 @@ export default interface BaseResponse<T> {
   statusCode: number;
   message: string;
   statusCodeCat: string;
+  count: number;
   timeStamp: string;
 }
