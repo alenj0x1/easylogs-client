@@ -1,0 +1,54 @@
+<div class="shadow-sm bg-white rounded">
+  <header class="p-4 flex flex-col">
+    <!-- UserAppId -->
+    <div class="flex flex-col">
+      <span class="text-xs text-zinc-400">{{ user.userAppId }}</span>
+    </div>
+
+    <!-- Base info -->
+    <div class="flex flex-col gap-2">
+      <!-- Username and Email -->
+      <div class="flex flex-col">
+        <span class="font-semibold color-primary text-2xl">{{ user.username }}</span>
+        <span class="font-light color-secondary text-sm">{{ user.email }}</span>
+      </div>
+
+      <div class="flex gap-2 flex-wrap">
+        @for (permission of user.permissions; track $index) { @if (permission.permissionId == 1) {
+        <div class="bg-red-100/50 border-[2px] border-red-500/15 px-3 py-1 rounded-full text-xs text-red-600">
+          {{ permission.showName }}
+        </div>
+        } @else {
+        <div class="bg-zinc-100/50 border-[2px] border-zinc-500/15 px-3 py-1 rounded-full text-xs text-zinc-600">
+          {{ permission.showName }}
+        </div>
+        } }
+      </div>
+    </div>
+  </header>
+
+  <footer class="p-2 gap-2 flex-col md:flex-row flex justify-between items-center bg-slate-50">
+    <span class="text-xs color-secondary flex gap-2 items-center">
+      <ng-icon name="heroClock" class="icon"></ng-icon> {{ parseCreatedAt() }}
+    </span>
+
+    <!-- Actions -->
+    <div class="flex gap-2 self-start flex-row w-full md:w-auto">
+      <button
+        class="btn btn-warning w-full md:w-auto"
+        [routerLink]="['/users/update/' + user.userAppId]"
+        [disabled]="libs.mePerms(me, libs.PERMISSIONS.UPDATE_USERS)"
+      >
+        <ng-icon name="heroPencilSolid"></ng-icon>
+      </button>
+
+      <button
+        class="btn btn-danger w-full md:w-auto"
+        (click)="onUserDelete()"
+        [disabled]=""
+      >
+        <ng-icon name="heroArchiveBoxXMarkSolid"></ng-icon>
+      </button>
+    </div>
+  </footer>
+</div>

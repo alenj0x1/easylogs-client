@@ -50,6 +50,6 @@ export class HomeComponent implements OnInit {
   constructor(private data: DataService) {}
 
   ngOnInit(): void {
-    this.data.$data.subscribe((data) => (this.appInfo = data));
+    this.data.$appInfo.subscribe((data) => (this.appInfo = data));
   }
 }

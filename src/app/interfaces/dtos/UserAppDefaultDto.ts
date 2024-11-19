@@ -1,9 +1,9 @@
-import UserAppPermissionDto from './UserAppPermissionDto';
+import PermissionDto from './PermissionDto';
 
 export default interface UserAppDefaultDto {
   userAppId: string;
   username: string;
   email: string;
-  permissions: UserAppPermissionDto[];
+  permissions: PermissionDto[];
   createdAt: string;
 }

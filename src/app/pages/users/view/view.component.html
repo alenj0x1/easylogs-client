@@ -1,3 +1,30 @@
 <div class="page-container">
-  <h2 class="title">Usuarios</h2>
+  <header class="flex flex-col gap-2">
+    <div class="flex justify-between gap-3">
+      <h2 class="title color-primary">Usuarios</h2>
+
+      <button class="max-w-20 md:max-w-none md:w-auto btn btn-primary self-start w-full">
+        <ng-icon name="heroBeakerSolid" class="btn-icon"></ng-icon>
+        <span class="hidden md:inline" [routerLink]="['/users/create']">Crear un usuario</span>
+      </button>
+    </div>
+
+    <p class="para">Consulte los usuarios que forman parte de esta instancia</p>
+  </header>
+
+  <div>
+    <div class="flex flex-col gap-4">
+      @for (user of users; track $index) {
+      <app-user-view-card [user]="user" />
+      }
+    </div>
+
+    <p-paginator
+      (onPageChange)="onPageChange($event)"
+      [first]="0"
+      [rows]="rowsPerPage"
+      [totalRecords]="usersCount"
+      [rowsPerPageOptions]="[10, 30, 50]"
+    />
+  </div>
 </div>

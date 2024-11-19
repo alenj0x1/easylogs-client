@@ -1,4 +1,4 @@
-export const welcomeList = [
+export const WELCOME_WORDS = [
   'Bienvenido', // Español
   'Welcome', // Inglés
   'Bienvenue', // Francés
@@ -26,4 +26,16 @@ export const welcomeList = [
   'Sawubona', // Zulu
 ];
 
-export const baseUrl = 'http://localhost:5164/api/v1';
+export const PERMISSIONS = {
+  ADMINISTRATOR: 1,
+  CREATE_LOGS: 2,
+  DELETE_LOGS: 3,
+  CREATE_USERS: 4,
+  UPDATE_USERS: 5,
+  DELETE_USERS: 6,
+  CREATE_ACCESS_TOKEN: 7,
+  REMOVE_ACCESS_TOKEN: 8,
+};
+
+export const BASE_URL = 'http://localhost:5164/api/v1';
+export const USERS_ROWS_PER_PAGE = 3;

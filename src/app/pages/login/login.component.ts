@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { welcomeList } from '../../lib/consts.lib';
+import { WELCOME_WORDS } from '../../lib/consts.lib';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroRocketLaunchSolid } from '@ng-icons/heroicons/solid';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
-  public welcome: string = welcomeList[0];
+  public welcome: string = WELCOME_WORDS[0];
 
   constructor(private http: HttpService, private messageService: MessageService, private router: Router) {}
 
@@ -32,9 +32,9 @@ export class LoginComponent implements OnInit {
     let current = 0;
 
     setInterval(() => {
-      if (current == welcomeList.length) current = 0;
+      if (current == WELCOME_WORDS.length) current = 0;
 
-      this.welcome = welcomeList[current];
+      this.welcome = WELCOME_WORDS[current];
       current += 1;
     }, 3000);
   }

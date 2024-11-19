@@ -94,6 +94,14 @@ body {
   @apply bg-green-700 text-green-300;
 }
 
+.btn-warning {
+  @apply bg-yellow-400 text-yellow-50;
+}
+
+.btn-danger {
+  @apply bg-red-400 text-red-50;
+}
+
 /* Forms */
 .form {
   @apply flex flex-col gap-3 p-10 rounded-lg;

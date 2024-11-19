@@ -9,3 +9,13 @@
   grid-template-columns: repeat(auto-fill, minmax(400px, auto));
   grid-auto-rows: 100px;
 }
+
+@media only screen and (max-width: 600px) {
+  .container-grid {
+    margin: 15px 0;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+    grid-auto-rows: auto;
+  }
+}
