@@ -31,12 +31,7 @@ export class UserViewCardComponent implements OnInit {
     mePerms,
   };
 
-  constructor(
-    private http: HttpService,
-    private data: DataService,
-    private router: Router,
-    private messageService: MessageService
-  ) {}
+  constructor(private http: HttpService, private data: DataService, private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.data.$me.subscribe((data) => {
@@ -73,7 +68,7 @@ export class UserViewCardComponent implements OnInit {
       },
       error: ({ message }) => {
         this.messageService.add({
-          severity: 'success',
+          severity: 'error',
           detail: message,
           life: 1000,
         });

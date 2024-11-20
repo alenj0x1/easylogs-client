@@ -6,6 +6,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { HttpService } from '../../services/http.service';
 import { Message, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,12 @@ export class LoginComponent implements OnInit {
   });
   public welcome: string = WELCOME_WORDS[0];
 
-  constructor(private http: HttpService, private messageService: MessageService, private router: Router) {}
+  constructor(
+    private http: HttpService,
+    private messageService: MessageService,
+    private router: Router,
+    private token: TokenService
+  ) {}
 
   ngOnInit(): void {
     this.showWelcome();
@@ -49,9 +55,7 @@ export class LoginComponent implements OnInit {
         });
 
         if (data) {
-          localStorage.setItem('token', data.accessToken);
-          localStorage.setItem('refresh_token', data.refreshToken);
-
+          this.token.set(data);
           this.router.navigate(['home']);
           return;
         }

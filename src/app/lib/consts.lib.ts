@@ -39,3 +39,6 @@ export const PERMISSIONS = {
 
 export const BASE_URL = 'http://localhost:5164/api/v1';
 export const USERS_ROWS_PER_PAGE = 3;
+export const BEFORE_TIME_RENEW_TOKEN = 30000;
+export const TOKEN_DEFINITION = 'token';
+export const REFRESH_TOKEN_DEFINITION = 'refresh_token';

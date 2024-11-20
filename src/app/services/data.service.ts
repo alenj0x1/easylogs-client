@@ -23,9 +23,6 @@ export class DataService {
 
   constructor(private http: HttpService) {
     if (localStorage.getItem('token')) {
-      // Token validation
-      this.http.validateToken().subscribe();
-
       // Data setting
       this.http.appInfo.subscribe(({ data }) => {
         if (data) this.updateAppInfo(data);

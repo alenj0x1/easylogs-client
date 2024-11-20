@@ -44,6 +44,6 @@ export class HttpService {
   }
 
   userDelete(id: string) {
-    return this.http.delete<BaseResponse<boolean>>(`${BASE_URL}/user/${id}`);
+    return this.http.delete<BaseResponse<boolean>>(`${BASE_URL}/user/delete/${id}`);
   }
 }
