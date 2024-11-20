@@ -3,4 +3,5 @@ export default interface ICard {
   para: string;
   icon: string;
   route: string;
+  permission: number;
 }

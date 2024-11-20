@@ -5,9 +5,8 @@
   </div>
 
   <div class="container-grid">
-
     @for (card of cards; track $index) {
-      <app-card [title]="card.title" [para]="card.para" [icon]="card.icon" [route]="card.route"/>
+    <app-card [title]="card.title" [para]="card.para" [icon]="card.icon" [route]="card.route"></app-card>
     }
   </div>
 </div>

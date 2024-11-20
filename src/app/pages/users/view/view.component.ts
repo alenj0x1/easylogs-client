@@ -22,7 +22,7 @@ export class ViewComponent implements OnInit {
   public usersCount: number = 0;
   public rowsPerPage: number = USERS_ROWS_PER_PAGE;
 
-  constructor(private http: HttpService, private data: DataService) {}
+  constructor(private readonly http: HttpService, private readonly data: DataService) {}
 
   ngOnInit(): void {
     let initial = this.http

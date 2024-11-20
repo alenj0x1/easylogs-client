@@ -104,20 +104,34 @@ body {
 
 /* Forms */
 .form {
-  @apply flex flex-col gap-3 p-10 rounded-lg;
+  @apply gap-3 p-5 rounded-lg;
 }
 
 .form-body {
-  @apply flex flex-col gap-2;
+  @apply gap-2;
 }
 
 .form-footer {
   @apply mt-3;
 }
 
+.label {
+  @apply flex flex-col gap-1 font-semibold text-sm;
+}
+
+.label-para {
+  @apply text-xs font-light;
+}
+
 .input {
   border: 1px solid rgb(75, 75, 75, 0.1);
-  @apply bg-zinc-100 py-3 px-4 rounded-md text-sm text-zinc-700 font-medium
+  @apply bg-white py-3 px-4 rounded-md text-sm text-zinc-700 font-medium
+  placeholder:text-zinc-300 placeholder:font-light;
+}
+
+.input-select {
+  border: 1px solid rgb(75, 75, 75, 0.1);
+  @apply bg-white rounded-md text-xs text-zinc-700 font-medium
   placeholder:text-zinc-300 placeholder:font-light;
 }
 

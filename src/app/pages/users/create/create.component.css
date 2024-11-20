@@ -1,0 +1,19 @@
+.page-container {
+  @apply bg-white p-10 rounded-md flex flex-col gap-4;
+}
+
+.form {
+  @apply flex flex-col;
+}
+
+.form-body {
+  @apply flex-wrap;
+}
+
+.label {
+  @apply w-full max-w-96;
+}
+
+.form-footer {
+  @apply self-end;
+}

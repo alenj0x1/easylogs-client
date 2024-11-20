@@ -3,9 +3,12 @@
     <div class="flex justify-between gap-3">
       <h2 class="title color-primary">Usuarios</h2>
 
-      <button class="max-w-20 md:max-w-none md:w-auto btn btn-primary self-start w-full">
+      <button
+        class="max-w-20 md:max-w-none md:w-auto btn btn-primary self-start w-full"
+        [routerLink]="['/users/create']"
+      >
         <ng-icon name="heroBeakerSolid" class="btn-icon"></ng-icon>
-        <span class="hidden md:inline" [routerLink]="['/users/create']">Crear un usuario</span>
+        <span class="hidden md:inline">Crear un usuario</span>
       </button>
     </div>
 

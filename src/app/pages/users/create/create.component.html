@@ -1,1 +1,51 @@
-<p>create works!</p>
+<div class="page-container">
+  <header class="flex flex-col gap-2">
+    <div class="flex justify-between gap-3">
+      <h2 class="title color-primary">Crear un usuario</h2>
+    </div>
+
+    <p class="para">Una instancia, multiples usuarios</p>
+  </header>
+
+  <div>
+    <form class="form" [formGroup]="form" (ngSubmit)="onUserCreate()">
+      <!-- Body -->
+      <div class="flex gap-4 form-body w-full">
+        <label class="label color-primary">
+          Nombre de usuario
+          <input class="input" type="text" placeholder="John Doe" formControlName="username" />
+        </label>
+
+        <label class="label color-primary">
+          Correo electronico
+          <input class="input" type="email" placeholder="johndoe@example.com" formControlName="email" />
+        </label>
+
+        <label class="label color-primary">
+          Contraseña
+          <input class="input" type="password" placeholder="**********" formControlName="password" />
+        </label>
+
+        <label class="label color-primary">
+          Permisos
+          <span class="label-para color-secondary"
+            >Los permisos le permiten limitar a un usuario, a solo ciertas partes de esta instancia</span
+          >
+          <p-multiSelect
+            [options]="appInfo.permissions"
+            formControlName="permissions"
+            optionLabel="showName"
+            display="chip"
+            [showClear]="true"
+            placeholder="Seleccione uno o más permisos"
+            class="input-select flex flex-col"
+          />
+        </label>
+      </div>
+
+      <footer class="form-footer">
+        <button class="btn btn-primary" [disabled]="!form.valid">Crear</button>
+      </footer>
+    </form>
+  </div>
+</div>

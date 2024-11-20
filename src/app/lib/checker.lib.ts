@@ -7,7 +7,7 @@ const mePerms = (user: UserAppMeDto, permission: number) => {
     (perm) => perm.permissionId == PERMISSIONS.ADMINISTRATOR || perm.permissionId == permission
   );
 
-  return gt.length > 0;
+  return gt.length < 0;
 };
 
 const userPerms = (user: UserAppDefaultDto, permission: number) => {
@@ -15,7 +15,7 @@ const userPerms = (user: UserAppDefaultDto, permission: number) => {
     (perm) => perm.permissionId == PERMISSIONS.ADMINISTRATOR || perm.permissionId == permission
   );
 
-  return gt.length > 0;
+  return gt.length < 0;
 };
 
 export { mePerms, userPerms };

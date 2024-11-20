@@ -9,6 +9,7 @@ import UserAppDefaultDto from '../interfaces/dtos/UserAppDefaultDto';
 import GetUsersRequest from '../interfaces/requests/user/GetUsersRequest';
 import AuthRenewAccessRequest from '../interfaces/requests/auth/AuthRenewAccessRequest';
 import UserAppMeDto from '../interfaces/dtos/UserAppMeDto';
+import CreateUserRequest from '../interfaces/requests/user/CreateUserRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -35,6 +36,10 @@ export class HttpService {
   }
 
   // User controller
+  userCreate(request: CreateUserRequest) {
+    return this.http.post<BaseResponse<UserAppDefaultDto>>(`${BASE_URL}/user/create`, request);
+  }
+
   users(request: GetUsersRequest) {
     return this.http.post<BaseResponse<UserAppDefaultDto[]>>(`${BASE_URL}/user`, request);
   }

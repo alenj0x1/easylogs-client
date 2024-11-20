@@ -5,7 +5,7 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroArchiveBoxXMarkSolid, heroPencilSolid } from '@ng-icons/heroicons/solid';
 import { heroClock } from '@ng-icons/heroicons/outline';
 import moment from 'moment';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { DataService } from '../../services/data.service';
 import UserAppMeDto from '../../interfaces/dtos/UserAppMeDto';
@@ -31,7 +31,11 @@ export class UserViewCardComponent implements OnInit {
     mePerms,
   };
 
-  constructor(private http: HttpService, private data: DataService, private messageService: MessageService) {}
+  constructor(
+    private readonly http: HttpService,
+    private readonly data: DataService,
+    private readonly messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.data.$me.subscribe((data) => {
@@ -66,10 +70,10 @@ export class UserViewCardComponent implements OnInit {
         this.users.splice(usrIndex, 1);
         this.data.updateUsers(this.users);
       },
-      error: ({ message }) => {
+      error: ({ error, message }) => {
         this.messageService.add({
           severity: 'error',
-          detail: message,
+          detail: error.message,
           life: 1000,
         });
       },

@@ -45,7 +45,7 @@
       <button
         class="btn btn-danger w-full md:w-auto"
         (click)="onUserDelete()"
-        [disabled]=""
+        [disabled]="libs.mePerms(me, libs.PERMISSIONS.DELETE_USERS)"
       >
         <ng-icon name="heroArchiveBoxXMarkSolid"></ng-icon>
       </button>
