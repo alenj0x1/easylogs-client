@@ -5,7 +5,6 @@ import defaultLib from '../../lib/default.lib';
 import { CardComponent } from '../../components/card/card.component';
 import ICard from '../../interfaces/components/ICard';
 import { PERMISSIONS } from '../../lib/consts.lib';
-import { mePerms } from '../../lib/checker.lib';
 import UserAppMeDto from '../../interfaces/dtos/UserAppMeDto';
 
 @Component({

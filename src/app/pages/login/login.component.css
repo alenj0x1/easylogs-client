@@ -3,7 +3,7 @@
 }
 
 .form {
-  @apply max-w-[450px];
+  @apply max-w-[450px] p-5;
 }
 
 .form-header {

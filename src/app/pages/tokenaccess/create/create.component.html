@@ -1,1 +1,115 @@
-<p>create works!</p>
+<div class="page-container">
+  <header class="flex flex-col">
+    <div class="flex justify-between gap-3">
+      <h2 class="title color-primary">Tokens de acceso</h2>
+    </div>
+
+    <p class="para">Cree uno o visualize los tokens de acceso, que pertenecen a esta instancia</p>
+  </header>
+
+  <div class="flex">
+    <form class="form flex flex-col w-full" (submit)="onTokenAccessCreate()">
+      <header class="form-header">
+        <h3 class="subtitle color-primary">Crear uno nuevo</h3>
+        <span class="para">Un token de acceso le permite comunicarse con la API de esta intancia</span>
+      </header>
+
+      <div class="flex flex-col md:flex-row gap-10">
+        <!-- User selection -->
+        <label class="label color-primary">
+          Seleccione un usuario
+          <span class="label-para color-secondary">Busque a un usuario, por su nombre de usuario</span>
+
+          <p-autoComplete
+            [(ngModel)]="selectedUser"
+            name="''"
+            [suggestions]="users"
+            (completeMethod)="onSearchUsers($event)"
+            optionLabel="username"
+            [disabled]="!libs.userPerms(me, libs.PERMISSIONS.CREATE_ACCESS_TOKEN)"
+          ></p-autoComplete>
+        </label>
+
+        <label class="label color-primary">
+          Tiempo de expiración
+          <span class="label-para color-secondary"
+            >Si desea que el token de acceso no expire, deje este campo en blanco</span
+          >
+          <p-calendar
+            styleClass="md:w-auto w-full"
+            name="''"
+            [(ngModel)]="selectedExpiration"
+            [disabled]="!libs.userPerms(me, libs.PERMISSIONS.CREATE_ACCESS_TOKEN)"
+          />
+        </label>
+      </div>
+
+      @if (tokenAccess) {
+      <div class="flex flex-col gap-2">
+        <strong class="para">
+          <strong>¡Token de acceso creado correctamente!</strong>
+          <br />
+          <strong class="color-primary">Guarde el token de acceso en un lugar seguro</strong></strong
+        >
+        <button type="button" class="btn btn-secondary" (click)="copyToken()">
+          Copiar <ng-icon name="heroClipboardSolid" class="btn-icon"></ng-icon>
+        </button>
+      </div>
+      }
+
+      <footer class="form-footer flex justify-end">
+        <button
+          type="submit"
+          class="btn btn-primary md:w-auto w-full"
+          [disabled]="selectedUser.userAppId == '' || !libs.userPerms(me, libs.PERMISSIONS.CREATE_ACCESS_TOKEN)"
+        >
+          Crear token de acceso
+        </button>
+      </footer>
+    </form>
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <header>
+      <h3 class="subtitle color-primary">Creados previamente</h3>
+      <span class="para">Un token de acceso le permite comunicarse con la API de esta intancia</span>
+    </header>
+
+    <p-table [value]="tokenAccesses" styleClass="p-datatable-striped">
+      <ng-template pTemplate="header">
+        <tr>
+          <th scope="col" class="bg-white border-b-2">ID</th>
+          <th scope="col" class="bg-white border-b-2">Valor</th>
+          <th scope="col" class="bg-white border-b-2">Usuario</th>
+          <th scope="col" class="bg-white border-b-2">Expiración</th>
+          <th scope="col" class="bg-white border-b-2">Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-tokenAccess>
+        <tr>
+          <td>{{ tokenAccess.tokenAccessId }}</td>
+          <td>{{ tokenAccess.value }}</td>
+          <td>{{ tokenAccess.userApp.email }}</td>
+          <td>{{ parseCreatedAt(tokenAccess.expiration) }}</td>
+          <td>
+            <button
+              class="btn btn-primary"
+              (click)="onTokenAccessDelete(tokenAccess.tokenAccessId)"
+              [disabled]="!libs.userPerms(me, libs.PERMISSIONS.REMOVE_ACCESS_TOKEN)"
+            >
+              <ng-icon name="heroArchiveBoxXMarkSolid" class="btn-icon"></ng-icon>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <p-paginator
+      (onPageChange)="onPageChange($event)"
+      [first]="0"
+      [rows]="rowsPerPage"
+      [totalRecords]="tokenAccessesCount"
+      [rowsPerPageOptions]="[10, 30, 50]"
+    />
+  </div>
+</div>

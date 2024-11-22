@@ -4,9 +4,10 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroRocketLaunchSolid } from '@ng-icons/heroicons/solid';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
-import { Message, MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { TokenService } from '../../services/token.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -24,10 +25,11 @@ export class LoginComponent implements OnInit {
   public welcome: string = WELCOME_WORDS[0];
 
   constructor(
-    private http: HttpService,
-    private messageService: MessageService,
-    private router: Router,
-    private token: TokenService
+    private readonly http: HttpService,
+    private readonly messageService: MessageService,
+    private readonly router: Router,
+    private readonly token: TokenService,
+    private readonly data: DataService
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +48,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.http.login(this.form.value).subscribe({
+    this.http.authLogin(this.form.value).subscribe({
       next: ({ data, message }) => {
         this.messageService.add({
           severity: 'success',
@@ -57,6 +59,13 @@ export class LoginComponent implements OnInit {
         if (data) {
           this.token.set(data);
           this.router.navigate(['home']);
+
+          // Get user me data
+          this.http.userMe.subscribe(({ data }) => {
+            if (data === null) return;
+            this.data.updateMe(data);
+          });
+
           return;
         }
 

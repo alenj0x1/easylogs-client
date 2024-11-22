@@ -11,7 +11,7 @@ import { HeaderComponent } from '../../components/header/header.component';
   styleUrl: './landing-page.component.css',
 })
 export class LandingPageComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) this.router.navigate(['home']);

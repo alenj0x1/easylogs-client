@@ -1,4 +1,5 @@
 import AppInfoDto from '../interfaces/dtos/AppInfoDto';
+import TokenAccessDto from '../interfaces/dtos/TokenAccessDto';
 import UserAppDefaultDto from '../interfaces/dtos/UserAppDefaultDto';
 import UserAppMeDto from '../interfaces/dtos/UserAppMeDto';
 
@@ -30,8 +31,17 @@ const userAppMe: UserAppMeDto = {
   createdAt: '',
 };
 
+const tokenAccess: TokenAccessDto = {
+  tokenAccessId: 0,
+  value: '',
+  userApp: userAppDefault,
+  expiration: '',
+  createdAt: '',
+};
+
 export default {
   appInfo,
   userAppDefault,
   userAppMe,
+  tokenAccess,
 };

@@ -7,7 +7,10 @@ import { UserViewCardComponent } from '../../../components/user-view-card/user-v
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroBeakerSolid } from '@ng-icons/heroicons/solid';
 import { RouterLink } from '@angular/router';
-import { USERS_ROWS_PER_PAGE } from '../../../lib/consts.lib';
+import { PERMISSIONS, USERS_ROWS_PER_PAGE } from '../../../lib/consts.lib';
+import { userPerms } from '../../../lib/checker.lib';
+import UserAppMeDto from '../../../interfaces/dtos/UserAppMeDto';
+import defaultLib from '../../../lib/default.lib';
 
 @Component({
   selector: 'app-view',
@@ -19,14 +22,19 @@ import { USERS_ROWS_PER_PAGE } from '../../../lib/consts.lib';
 })
 export class ViewComponent implements OnInit {
   public users: UserAppDefaultDto[] = [];
+  public me: UserAppMeDto = defaultLib.userAppMe;
   public usersCount: number = 0;
   public rowsPerPage: number = USERS_ROWS_PER_PAGE;
+  public libs = {
+    PERMISSIONS,
+    userPerms,
+  };
 
   constructor(private readonly http: HttpService, private readonly data: DataService) {}
 
   ngOnInit(): void {
     let initial = this.http
-      .users({
+      .userGetByFilter({
         limit: this.rowsPerPage,
       })
       .subscribe({
@@ -46,7 +54,7 @@ export class ViewComponent implements OnInit {
 
   onPageChange(data: PaginatorState) {
     let post = this.http
-      .users({
+      .userGetByFilter({
         offset: data.first,
         limit: data.rows,
       })

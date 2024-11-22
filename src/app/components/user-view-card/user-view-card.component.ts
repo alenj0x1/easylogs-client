@@ -10,7 +10,7 @@ import { HttpService } from '../../services/http.service';
 import { DataService } from '../../services/data.service';
 import UserAppMeDto from '../../interfaces/dtos/UserAppMeDto';
 import { MessageService } from 'primeng/api';
-import { mePerms } from '../../lib/checker.lib';
+import { userPerms } from '../../lib/checker.lib';
 import { PERMISSIONS } from '../../lib/consts.lib';
 
 @Component({
@@ -28,7 +28,7 @@ export class UserViewCardComponent implements OnInit {
   public me: UserAppMeDto = defaultLib.userAppMe;
   public libs = {
     PERMISSIONS,
-    mePerms,
+    userPerms,
   };
 
   constructor(
@@ -40,6 +40,7 @@ export class UserViewCardComponent implements OnInit {
   ngOnInit(): void {
     this.data.$me.subscribe((data) => {
       if (data === null) return;
+      console.log(data);
       this.me = data;
     });
 

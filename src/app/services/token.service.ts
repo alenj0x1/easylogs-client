@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class TokenService {
-  constructor(private http: HttpService, private router: Router) {}
+  constructor(private readonly http: HttpService, private readonly router: Router) {}
 
   public set(data: AuthLoginResponse) {
     localStorage.setItem(TOKEN_DEFINITION, data.accessToken);
@@ -27,7 +27,7 @@ export class TokenService {
 
     const decoded = jwtDecode(token);
     if (!decoded.exp) {
-      this.remove;
+      this.remove();
       return;
     }
 
@@ -46,7 +46,7 @@ export class TokenService {
 
   private renew() {
     this.http
-      .renewAccess({
+      .authRenewAccess({
         refreshToken: localStorage.getItem(REFRESH_TOKEN_DEFINITION) ?? '',
       })
       .subscribe({

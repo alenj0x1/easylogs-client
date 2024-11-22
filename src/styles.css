@@ -14,12 +14,20 @@
   font-family: 'Poppins', serif;
 }
 
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-red-500 rounded-lg;
+}
+
 .title {
   @apply text-3xl font-bold;
 }
 
 .subtitle {
-  @apply flex gap-2 items-center text-3xl font-semibold;
+  @apply flex gap-2 items-center text-3xl font-bold;
 }
 
 .subtitle .icon {
@@ -63,12 +71,12 @@ body {
 }
 
 .page-container {
-  @apply xl:mx-0 mx-4 mt-6;
+  @apply xl:mx-0 mx-4 mb-12;
 }
 
 .header {
   box-shadow: 0 0 100px 50px rgba(255, 0, 0, 0.1);
-  @apply bg-zinc-50 xl:mx-96 xl:my-7 flex justify-between py-2 px-10 items-center xl:rounded-full;
+  @apply mb-6 bg-red-50 xl:mx-96 xl:my-7 flex justify-between py-2 px-10 items-center xl:rounded-full;
 }
 
 /* Buttons */
@@ -90,6 +98,10 @@ body {
   @apply bg-red-700 text-red-300;
 }
 
+.btn-secondary {
+  @apply bg-zinc-700 text-zinc-300;
+}
+
 .btn-success {
   @apply bg-green-700 text-green-300;
 }
@@ -104,7 +116,7 @@ body {
 
 /* Forms */
 .form {
-  @apply gap-3 p-5 rounded-lg;
+  @apply gap-3 rounded-lg;
 }
 
 .form-body {
@@ -123,10 +135,17 @@ body {
   @apply text-xs font-light;
 }
 
-.input {
+.input,
+.p-autocomplete-input,
+.p-inputtext {
   border: 1px solid rgb(75, 75, 75, 0.1);
   @apply bg-white py-3 px-4 rounded-md text-sm text-zinc-700 font-medium
   placeholder:text-zinc-300 placeholder:font-light;
+}
+
+.p-autocomplete,
+.p-autocomplete-input {
+  @apply md:w-auto w-full;
 }
 
 .input-select {
@@ -135,8 +154,17 @@ body {
   placeholder:text-zinc-300 placeholder:font-light;
 }
 
-.input:focus {
-  outline: 6px solid #ff323236;
+.input:focus,
+.p-autocomplete-input:focus,
+.p-autocomplete-input:enabled:focus,
+.p-inputtext:enabled:focus,
+.p-inputtext:focus {
+  box-shadow: none;
+  outline: 6px solid #ff323236 !important;
+}
+
+.p-paginator {
+  background: none;
 }
 
 /* Colors */

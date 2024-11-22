@@ -27,7 +27,7 @@
     </div>
   </header>
 
-  <footer class="p-2 gap-2 flex-col md:flex-row flex justify-between items-center bg-slate-50">
+  <footer class="p-2 gap-2 flex-col md:flex-row flex justify-between items-center">
     <span class="text-xs color-secondary flex gap-2 items-center">
       <ng-icon name="heroClock" class="icon"></ng-icon> {{ parseCreatedAt() }}
     </span>
@@ -37,7 +37,7 @@
       <button
         class="btn btn-warning w-full md:w-auto"
         [routerLink]="['/users/update/' + user.userAppId]"
-        [disabled]="libs.mePerms(me, libs.PERMISSIONS.UPDATE_USERS)"
+        [disabled]="!libs.userPerms(me, libs.PERMISSIONS.UPDATE_USERS)"
       >
         <ng-icon name="heroPencilSolid"></ng-icon>
       </button>
@@ -45,7 +45,7 @@
       <button
         class="btn btn-danger w-full md:w-auto"
         (click)="onUserDelete()"
-        [disabled]="libs.mePerms(me, libs.PERMISSIONS.DELETE_USERS)"
+        [disabled]="!libs.userPerms(me, libs.PERMISSIONS.DELETE_USERS)"
       >
         <ng-icon name="heroArchiveBoxXMarkSolid"></ng-icon>
       </button>

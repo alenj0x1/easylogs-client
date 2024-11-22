@@ -8,6 +8,9 @@ import { HttpService } from '../../../services/http.service';
 import { MessageService } from 'primeng/api';
 import UserAppDefaultDto from '../../../interfaces/dtos/UserAppDefaultDto';
 import { Router } from '@angular/router';
+import { PERMISSIONS } from '../../../lib/consts.lib';
+import { userPerms } from '../../../lib/checker.lib';
+import UserAppMeDto from '../../../interfaces/dtos/UserAppMeDto';
 
 @Component({
   selector: 'app-create',
@@ -23,9 +26,14 @@ export class CreateComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
     permissions: new FormControl<PermissionDto[]>([], [Validators.required]),
   });
+  public me: UserAppMeDto = defaultLib.userAppMe;
   public selectedPermissions: string[] = [];
   public users: UserAppDefaultDto[] = [];
   public appInfo = defaultLib.appInfo;
+  public libs = {
+    PERMISSIONS,
+    userPerms,
+  };
 
   constructor(
     private readonly data: DataService,
@@ -43,6 +51,11 @@ export class CreateComponent implements OnInit {
     this.data.$users.subscribe((data) => {
       if (data === null) return;
       this.users = data;
+    });
+
+    this.data.$me.subscribe((data) => {
+      if (data === null) return;
+      this.me = data;
     });
   }
 

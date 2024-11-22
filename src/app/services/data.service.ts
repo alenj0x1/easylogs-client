@@ -5,30 +5,40 @@ import defaultLib from '../lib/default.lib';
 import { HttpService } from './http.service';
 import UserAppMeDto from '../interfaces/dtos/UserAppMeDto';
 import UserAppDefaultDto from '../interfaces/dtos/UserAppDefaultDto';
+import TokenAccessDto from '../interfaces/dtos/TokenAccessDto';
+import LogDto from '../interfaces/dtos/LogDto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   // App controller
-  private appInfoSubject = new BehaviorSubject<AppInfoDto>(defaultLib.appInfo);
+  private readonly appInfoSubject = new BehaviorSubject<AppInfoDto>(defaultLib.appInfo);
   public $appInfo = this.appInfoSubject.asObservable();
 
-  // Users controller
-  private meSubject = new BehaviorSubject<UserAppMeDto>(defaultLib.userAppMe);
+  // Auth controller
+  private readonly tokenAccessesSubject = new BehaviorSubject<TokenAccessDto[]>([]);
+  public $tokenAccesses = this.tokenAccessesSubject.asObservable();
+
+  // User controller
+  private readonly meSubject = new BehaviorSubject<UserAppMeDto>(defaultLib.userAppMe);
   public $me = this.meSubject.asObservable();
 
-  private usersSubject = new BehaviorSubject<UserAppDefaultDto[]>([]);
+  private readonly usersSubject = new BehaviorSubject<UserAppDefaultDto[]>([]);
   public $users = this.usersSubject.asObservable();
 
-  constructor(private http: HttpService) {
+  // Log controller
+  private readonly logsSubject = new BehaviorSubject<LogDto[]>([]);
+  public $logs = this.logsSubject.asObservable();
+
+  constructor(private readonly http: HttpService) {
     if (localStorage.getItem('token')) {
       // Data setting
       this.http.appInfo.subscribe(({ data }) => {
         if (data) this.updateAppInfo(data);
       });
 
-      this.http.me.subscribe({
+      this.http.userMe.subscribe({
         next: ({ data }) => {
           if (data) this.updateMe(data);
         },
@@ -41,12 +51,22 @@ export class DataService {
     this.appInfoSubject.next(value);
   }
 
-  // Users controller
+  // Auth controller
+  updateTokenAccesses(value: TokenAccessDto[]) {
+    this.tokenAccessesSubject.next(value);
+  }
+
+  // User controller
   updateMe(value: UserAppMeDto) {
     this.meSubject.next(value);
   }
 
   updateUsers(value: UserAppDefaultDto[]) {
     this.usersSubject.next(value);
+  }
+
+  // Log controller
+  updateLogs(value: LogDto[]) {
+    this.logsSubject.next(value);
   }
 }

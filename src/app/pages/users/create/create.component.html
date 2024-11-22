@@ -13,17 +13,35 @@
       <div class="flex gap-4 form-body w-full">
         <label class="label color-primary">
           Nombre de usuario
-          <input class="input" type="text" placeholder="John Doe" formControlName="username" />
+          <input
+            class="input"
+            type="text"
+            placeholder="John Doe"
+            formControlName="username"
+            [disabled]="!libs.userPerms(me, libs.PERMISSIONS.CREATE_USERS)"
+          />
         </label>
 
         <label class="label color-primary">
           Correo electronico
-          <input class="input" type="email" placeholder="johndoe@example.com" formControlName="email" />
+          <input
+            class="input"
+            type="email"
+            placeholder="johndoe@example.com"
+            formControlName="email"
+            [disabled]="!libs.userPerms(me, libs.PERMISSIONS.CREATE_USERS)"
+          />
         </label>
 
         <label class="label color-primary">
           Contraseña
-          <input class="input" type="password" placeholder="**********" formControlName="password" />
+          <input
+            class="input"
+            type="password"
+            placeholder="**********"
+            formControlName="password"
+            [disabled]="!libs.userPerms(me, libs.PERMISSIONS.CREATE_USERS)"
+          />
         </label>
 
         <label class="label color-primary">
@@ -39,12 +57,15 @@
             [showClear]="true"
             placeholder="Seleccione uno o más permisos"
             class="input-select flex flex-col"
+            [disabled]="!libs.userPerms(me, libs.PERMISSIONS.CREATE_USERS)"
           />
         </label>
       </div>
 
       <footer class="form-footer">
-        <button class="btn btn-primary" [disabled]="!form.valid">Crear</button>
+        <button class="btn btn-primary" [disabled]="!form.valid || !libs.userPerms(me, libs.PERMISSIONS.CREATE_USERS)">
+          Crear
+        </button>
       </footer>
     </form>
   </div>

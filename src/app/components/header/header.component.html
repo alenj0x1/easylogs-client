@@ -1,18 +1,15 @@
-<header>
+<header class="relative">
   <div class="header relative">
     <app-brand></app-brand>
 
-    @if (isAuthenticated) 
-    {
-      <a href="/logout" role="button" class="link color-primary">
-        <ng-icon class="btn-icon" name="heroArrowRightOnRectangleSolid"></ng-icon> Cerrar sesión
-      </a>
-    }
-    @else 
-    {
-      <a class="color-warning link" [routerLink]="['/login']">
-        <ng-icon class="btn-icon" name="heroStarSolid"></ng-icon> Iniciar sesión
-      </a>
+    @if (isAuthenticated) {
+    <a href="/logout" role="button" class="link color-primary">
+      <ng-icon class="btn-icon" name="heroArrowRightOnRectangleSolid"></ng-icon> Cerrar sesión
+    </a>
+    } @else {
+    <a class="color-warning link" [routerLink]="['/login']">
+      <ng-icon class="btn-icon" name="heroStarSolid"></ng-icon> Iniciar sesión
+    </a>
     }
   </div>
 </header>
