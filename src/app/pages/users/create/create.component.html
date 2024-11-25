@@ -50,7 +50,7 @@
             >Los permisos le permiten limitar a un usuario, a solo ciertas partes de esta instancia</span
           >
           <p-multiSelect
-            [options]="appInfo.permissions"
+            [options]="this.appInfo.permissions"
             formControlName="permissions"
             optionLabel="showName"
             display="chip"

@@ -27,7 +27,7 @@
 }
 
 .subtitle {
-  @apply flex gap-2 items-center text-3xl font-bold;
+  @apply flex gap-2 items-center text-2xl font-bold;
 }
 
 .subtitle .icon {
@@ -146,6 +146,10 @@ body {
 .p-autocomplete,
 .p-autocomplete-input {
   @apply md:w-auto w-full;
+}
+
+.p-dropdown {
+  @apply w-full;
 }
 
 .input-select {

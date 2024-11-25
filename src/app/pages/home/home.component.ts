@@ -17,13 +17,6 @@ import UserAppMeDto from '../../interfaces/dtos/UserAppMeDto';
 export class HomeComponent implements OnInit {
   public cards: ICard[] = [
     {
-      title: 'Crear un registro',
-      para: 'Cree un registro fácilmente, sin usar directamente la API.',
-      icon: 'heroDocumentSolid',
-      route: '/logs/create',
-      permission: PERMISSIONS.CREATE_LOGS,
-    },
-    {
       title: 'Crear un usuario',
       para: 'Cree uno o más usuarios, y otorgue sus permisos correspondientes.',
       icon: 'heroDocumentSolid',

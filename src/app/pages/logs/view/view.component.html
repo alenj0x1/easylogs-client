@@ -1,1 +1,107 @@
-<p>view works!</p>
+<div class="page-container">
+  <header class="flex flex-col gap-2">
+    <div class="flex justify-between gap-3">
+      <h2 class="title color-primary">Registros</h2>
+    </div>
+
+    <p class="para">Consulte los registros creados en esta instancia</p>
+  </header>
+
+  <div class="flex flex-col gap-4">
+    <form (ngSubmit)="onLogSearch()" [formGroup]="form" class="form flex flex-col">
+      <header>
+        <div class="form-header">
+          <h2 class="subtitle color-primary">Busqueda avanzada</h2>
+          <p class="para">Busque uno o más registros, con una busqueda exhaustiva</p>
+        </div>
+      </header>
+
+      <div class="flex gap-2 flex-col md:flex-row flex-wrap">
+        <label class="label color-primary">
+          Identificación
+          <input class="input" type="text" formControlName="logId" />
+        </label>
+
+        <label class="label color-primary">
+          Rastreo
+          <input class="input" type="text" formControlName="trace" />
+        </label>
+
+        <label class="label color-primary">
+          Rango de creación de inicio
+          <p-calendar styleClass="md:w-auto w-full" name="''" formControlName="startDate" />
+        </label>
+
+        <label class="label color-primary">
+          Rango de creación de fin
+          <p-calendar styleClass="md:w-auto w-full" name="''" formControlName="endDate" />
+        </label>
+
+        <label class="label color-primary">
+          Tipo de registro
+          <p-dropdown
+            [options]="appInfo.logTypes"
+            formControlName="type"
+            optionLabel="name"
+            placeholder="Seleccione un tipo"
+            class="input-select"
+          />
+        </label>
+      </div>
+
+      <footer class="flex">
+        <button class="btn btn-primary w-full" [disabled]="!this.form.valid">Buscar</button>
+      </footer>
+    </form>
+
+    @if (logs.length > 0) {
+    <p-table [value]="logs" styleClass="p-datatable-striped">
+      <ng-template pTemplate="header">
+        <tr>
+          <th scope="col" class="bg-white border-b-2">ID</th>
+          <th scope="col" class="bg-white border-b-2">Mensaje</th>
+          <th scope="col" class="bg-white border-b-2">Rastreo</th>
+          <th scope="col" class="bg-white border-b-2">Excepción</th>
+          <th scope="col" class="bg-white border-b-2">Stack trace</th>
+          <th scope="col" class="bg-white border-b-2">Tipo</th>
+          <th scope="col" class="bg-white border-b-2">Data</th>
+          <th scope="col" class="bg-white border-b-2">Creado</th>
+          <th scope="col" class="bg-white border-b-2">Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-log>
+        <tr>
+          <td>{{ log.logId }}</td>
+          <td>{{ log.message }}</td>
+          <td>{{ log.trace }}</td>
+          <td>{{ log.exception !== '' || null ? log.exception : 'No aplica' }}</td>
+          <td>{{ log.stackTrace !== '' || null ? log.stackTrace : 'No aplica' }}</td>
+          <td>{{ parseLogType(log.type)?.name }}</td>
+
+          <td>{{ log.dataJson !== '{}' || null ? log.dataJson : 'Sin data' }}</td>
+          <td>{{ parseCreatedAt(log.createdAt) }}</td>
+          <td>
+            <button
+              class="btn btn-primary"
+              (click)="onLogDelete(log.logId)"
+              [disabled]="!libs.userPerms(me, libs.PERMISSIONS.DELETE_LOGS)"
+            >
+              <ng-icon name="heroArchiveBoxSolid" class="btn-icon"></ng-icon>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <p-paginator
+      (onPageChange)="onPageChange($event)"
+      [first]="0"
+      [rows]="rowsPerPage"
+      [totalRecords]="logsCount"
+      [rowsPerPageOptions]="[10, 30, 50]"
+    />
+    } @else {
+    <span class="para">No hay registros para mostrar</span>
+    }
+  </div>
+</div>

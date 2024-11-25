@@ -10,7 +10,6 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { CreateComponent as UsersCreateComponent } from './pages/users/create/create.component';
 import { ViewComponent as UsersViewComponent } from './pages/users/view/view.component';
 import { UpdateComponent as UsersUpdateComponent } from './pages/users/update/update.component';
-import { CreateComponent as LogsCreateComponent } from './pages/logs/create/create.component';
 import { ViewComponent as LogsViewComponent } from './pages/logs/view/view.component';
 import { UpdateComponent as LogsUpdateComponent } from './pages/logs/update/update.component';
 import { CreateComponent as TokenAccessCreateComponent } from './pages/tokenaccess/create/create.component';
@@ -47,10 +46,6 @@ export const routes: Routes = [
     component: BaseLayoutComponent,
     canActivate: [userLoggedGuard],
     children: [
-      {
-        path: 'create',
-        component: LogsCreateComponent,
-      },
       {
         path: 'update/:id',
         component: LogsUpdateComponent,

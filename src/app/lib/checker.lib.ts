@@ -10,4 +10,12 @@ const userPerms = (user: UserAppMeDto | UserAppDefaultDto, permission: number) =
   return gt.length > 0;
 };
 
-export { userPerms };
+const checkGuid = (value: string) => {
+  return new RegExp(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i).test(value);
+};
+
+const isNullOrWhiteSpace = (value: string | null | undefined) => {
+  return value === null || !value || value.trim() === '';
+};
+
+export { userPerms, checkGuid, isNullOrWhiteSpace };

@@ -10,7 +10,7 @@ import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
 import { CommonModule } from '@angular/common';
 import defaultLib from '../../../lib/default.lib';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import moment from 'moment';
 import { PERMISSIONS, TOKENACCESSES_ROWS_PER_PAGE } from '../../../lib/consts.lib';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
@@ -32,7 +32,7 @@ import { userPerms } from '../../../lib/checker.lib';
   ],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css',
-  providers: [provideIcons({ heroArchiveBoxXMarkSolid, heroClipboardSolid }), ConfirmationService],
+  providers: [provideIcons({ heroArchiveBoxXMarkSolid, heroClipboardSolid })],
 })
 export class CreateComponent implements OnInit {
   public form: FormGroup = new FormGroup({

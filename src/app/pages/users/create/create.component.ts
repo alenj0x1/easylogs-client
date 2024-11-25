@@ -59,6 +59,16 @@ export class CreateComponent implements OnInit {
     });
   }
 
+  parsePermissions() {
+    const findIndex = this.appInfo.permissions.findIndex((perm) => perm.permissionId == PERMISSIONS.ADMINISTRATOR);
+
+    console.log(userPerms(this.me, PERMISSIONS.ADMINISTRATOR), findIndex);
+
+    return userPerms(this.me, PERMISSIONS.ADMINISTRATOR)
+      ? this.appInfo.permissions
+      : this.appInfo.permissions.splice(findIndex, 1);
+  }
+
   onUserCreate() {
     this.http
       .userCreate({
