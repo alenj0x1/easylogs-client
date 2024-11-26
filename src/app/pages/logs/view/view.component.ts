@@ -74,7 +74,7 @@ export class ViewComponent implements OnInit {
   }
 
   parseLogType(id: number) {
-    return this.appInfo.logTypes.find((lgt) => lgt.logTypeId == id);
+    return this.appInfo.logTypes.find((lt) => lt.logTypeId == id);
   }
 
   onLogDelete(id: string) {

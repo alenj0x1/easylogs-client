@@ -76,7 +76,9 @@
           <td>{{ log.trace }}</td>
           <td>{{ log.exception !== '' || null ? log.exception : 'No aplica' }}</td>
           <td>{{ log.stackTrace !== '' || null ? log.stackTrace : 'No aplica' }}</td>
-          <td>{{ parseLogType(log.type)?.name }}</td>
+          <td>
+            <span [class]="parseLogType(log.type)?.styleClass">{{ parseLogType(log.type)?.showName }}</span>
+          </td>
 
           <td>{{ log.dataJson !== '{}' || null ? log.dataJson : 'Sin data' }}</td>
           <td>{{ parseCreatedAt(log.createdAt) }}</td>
