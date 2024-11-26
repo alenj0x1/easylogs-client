@@ -11,7 +11,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { CommonModule } from '@angular/common';
 import defaultLib from '../../../lib/default.lib';
 import { MessageService } from 'primeng/api';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { PERMISSIONS, TOKENACCESSES_ROWS_PER_PAGE } from '../../../lib/consts.lib';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroArchiveBoxXMarkSolid, heroClipboardSolid } from '@ng-icons/heroicons/solid';
@@ -73,7 +73,7 @@ export class CreateComponent implements OnInit {
   }
 
   parseCreatedAt(date: string) {
-    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+    return dayjs(date).format('MMMM Do YYYY, h:mm:ss a');
   }
 
   onPageChange(data: PaginatorState) {

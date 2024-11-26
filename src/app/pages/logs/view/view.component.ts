@@ -9,7 +9,7 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import LogDto from '../../../interfaces/dtos/LogDto';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { TableModule } from 'primeng/table';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { MessageService } from 'primeng/api';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
@@ -70,7 +70,7 @@ export class ViewComponent implements OnInit {
   }
 
   parseCreatedAt(date: string) {
-    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+    return dayjs(date).format('MMMM Do YYYY, h:mm:ss a');
   }
 
   parseLogType(id: number) {

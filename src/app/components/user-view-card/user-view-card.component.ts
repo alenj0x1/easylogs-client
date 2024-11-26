@@ -4,7 +4,7 @@ import defaultLib from '../../lib/default.lib';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroArchiveBoxXMarkSolid, heroPencilSolid } from '@ng-icons/heroicons/solid';
 import { heroClock } from '@ng-icons/heroicons/outline';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { RouterLink } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { DataService } from '../../services/data.service';
@@ -51,7 +51,7 @@ export class UserViewCardComponent implements OnInit {
   }
 
   parseCreatedAt() {
-    return moment(this.user.createdAt).format('MMMM Do YYYY, h:mm:ss a');
+    return dayjs(this.user.createdAt).format('MMMM Do YYYY, h:mm:ss a');
   }
 
   onUserDelete() {
