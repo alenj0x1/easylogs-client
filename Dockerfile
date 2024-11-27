@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn install && npx ng build && npm install -g serve
+RUN yarn install && npx ng build --configuration=production && npm install -g serve
 
 EXPOSE 3000
 
