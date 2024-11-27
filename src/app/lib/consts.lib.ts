@@ -37,7 +37,7 @@ export const PERMISSIONS = {
   REMOVE_ACCESS_TOKEN: 8,
 };
 
-export const BASE_URL = 'http://localhost:5164/api/v1';
+export const BASE_URL_DEVELOPMENT = 'http://localhost:5164/api/v1';
 export const USERS_ROWS_PER_PAGE = 10;
 export const TOKENACCESSES_ROWS_PER_PAGE = 3;
 export const LOGS_ROWS_PER_PAGE = 10;
