@@ -8,4 +8,4 @@ RUN yarn install && npx ng build --configuration=production && npm install -g se
 
 EXPOSE 3000
 
-CMD ["serve", "dist/easylogs-client/browser"]
+CMD ["serve", "-s ", "dist/easylogs-client/browser", "--single"]
