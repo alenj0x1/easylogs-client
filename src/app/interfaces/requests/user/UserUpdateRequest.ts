@@ -1,6 +1,7 @@
 export default interface UserUpdateRequest {
   username?: string | null;
   email?: string | null;
-  password?: string | null;
+  passwordNew?: string | null;
+  passwordConfirm?: string | null;
   permissions?: number[] | null;
 }

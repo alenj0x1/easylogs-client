@@ -75,7 +75,9 @@ export class CreateComponent implements OnInit {
         username: this.form.value.username ?? '',
         email: this.form.value.email ?? '',
         password: this.form.value.password ?? '',
-        permissions: this.form.value.permissions ? this.form.value.permissions.map((data) => data.permissionId) : [],
+        permissions: this.form.value.permissions
+          ? this.form.value.permissions.map((data: PermissionDto) => data.permissionId)
+          : [],
       })
       .subscribe({
         next: ({ data, message }) => {

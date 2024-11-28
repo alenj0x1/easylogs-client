@@ -64,7 +64,7 @@ export class TokenService {
 
   public remove() {
     localStorage.removeItem(TOKEN_DEFINITION);
-    localStorage.removeItem('refresh_token');
+    localStorage.removeItem(REFRESH_TOKEN_DEFINITION);
 
     this.router.navigate(['/']);
   }

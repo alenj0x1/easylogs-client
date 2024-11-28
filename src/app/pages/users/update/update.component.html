@@ -1,1 +1,74 @@
-<p>update works!</p>
+<div class="page-container">
+  <header class="flex flex-col gap-1">
+    <div class="flex justify-between gap-3">
+      <h2 class="title color-primary">Actualización de usuario</h2>
+    </div>
+
+    <p class="para">Actualize a un usuario que forma parte de esta instancia</p>
+  </header>
+
+  <form class="form flex flex-col" [formGroup]="form" (ngSubmit)="updateUser()">
+    <label class="label color-primary">
+      Nombre de usuario
+      <input
+        name="username"
+        class="input"
+        type="text"
+        formControlName="username"
+        [value]="user.username"
+        (input)="formChange($event)"
+      />
+    </label>
+
+    <label class="label color-primary">
+      Correo electronico
+      <input
+        name="email"
+        class="input"
+        type="text"
+        formControlName="email"
+        [value]="user.email"
+        (input)="formChange($event)"
+      />
+    </label>
+
+    <label class="label color-primary">
+      Permisos
+      <span class="label-para color-secondary"
+        >Los permisos le permiten limitar a un usuario, a solo ciertas partes de esta instancia</span
+      >
+      <p-multiSelect
+        [options]="this.appInfo.permissions"
+        formControlName="permissions"
+        optionLabel="showName"
+        display="chip"
+        [showClear]="true"
+        placeholder="Seleccione uno o más permisos"
+        class="input-select flex flex-col"
+        [disabled]="!libs.userPerms(me, libs.PERMISSIONS.CREATE_USERS)"
+        (onChange)="formChangeSelect($event)"
+      />
+    </label>
+
+    <label class="label color-primary">
+      Contraseña actual
+      <input
+        name="passwordCurrent"
+        class="input"
+        type="text"
+        formControlName="passwordCurrent"
+        (input)="passwordCurrentChange($event)"
+        (input)="formChange($event)"
+      />
+    </label>
+
+    @if (passwordNewActive) {
+    <label class="label color-primary">
+      Contraseña nueva
+      <input name="passwordNew" class="input" type="text" formControlName="passwordNew" (input)="formChange($event)" />
+    </label>
+    }
+
+    <button class="btn btn-warning" [disabled]="!userUpdated">Actualizar usuario</button>
+  </form>
+</div>

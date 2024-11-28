@@ -50,6 +50,11 @@ export class ViewComponent implements OnInit {
         },
         error: ({ error }) => {},
       });
+
+    this.data.$me.subscribe((data) => {
+      if (data === null) return;
+      this.me = data;
+    });
   }
 
   onPageChange(data: PaginatorState) {
